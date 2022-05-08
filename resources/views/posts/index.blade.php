@@ -1,5 +1,5 @@
-@extends('layouts.app')
+<x-layouts.app>
 
-@section('content')
+    <h1>hey fucko</h1>
 
-@endsection
+</x-layouts.app>

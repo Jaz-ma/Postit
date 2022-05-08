@@ -7,6 +7,8 @@
     <title>Postit</title>
 </head>
 <body>
-    @yield('content')
+
+{{$slot}}
+
 </body>
 </html>
