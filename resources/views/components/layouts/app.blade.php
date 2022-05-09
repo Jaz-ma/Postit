@@ -15,10 +15,10 @@
             <a href="/">home</a>
         </li>
         <li class="p-3">
-            <a href="">Dashboard</a>
+            <a href="{{route('dashboard')}}">Dashboard</a>
         </li>
         <li class="p-3">
-            <a href="">Post</a>
+            <a href="{{route('posts')}}">Posts</a>
         </li>
     </ul>
     <ul class="flex items-center">
@@ -27,17 +27,23 @@
             <a href="">{{auth()->user()->username}}</a>
         </li>
         <li class="p-3">
-            <a href="">Logout</a>
+            <form method="POST" action="{{route('logout')}}">
+            @csrf
+                <button>Logout</button>
+            </form>
         </li>
-        @else
+        @endauth
+
+        @guest
 
         <li class="p-3">
-            <a href="">Login</a>
+            <a href="{{route('login')}}">Login</a>
         </li>
         <li class="p-3">
             <a href="{{route('register')}}">Register</a>
         </li>
-        @endauth
+
+        @endguest
 
 
 

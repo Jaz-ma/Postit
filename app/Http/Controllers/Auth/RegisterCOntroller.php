@@ -8,7 +8,12 @@ use App\Http\Controllers\Controller;
 
 class RegisterCOntroller extends Controller
 {
-    public function register(){
+    public function __construct()
+    {
+        $this->middleware(['guest']);
+    }
+
+    public function index(){
         return view('Auth.register');
     }
     public function store(Request $request){
