@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterCOntroller;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 
 // Common Resource Routes:
 // index - Show all listings
@@ -34,4 +35,6 @@ Route::post('/logout',[LogoutController::class ,'logout'])->name('logout')->midd
 
 Route::get('/posts',[PostController::class,'index'])->name('posts');
 Route::post('/posts',[PostController::class,'store']);
+
+Route::post('/posts/{post}/like',[PostLikeController::class,'store'])->name('posts.like');
 

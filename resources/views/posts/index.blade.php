@@ -31,14 +31,20 @@
                     </p>
 
                     <div class="flex items-center">
-                        <form class="mr-1" method="POST" action="">
+                        @if (!$post->likedBy(auth()->user()))
+                        <form class="mr-1" method="POST" action="{{route('posts.like', $post->id)}}">
                             @csrf
                             <button type="submit" class="text-blue-500">Like</button>
                         </form>
+                        @else
                         <form class="mr-1" method="POST" action="">
                             @csrf
                             <button type="submit" class="text-blue-500">Unlike</button>
                         </form>
+                        @endif
+                        <span>
+                            {{$post->likes->count()}} {{Str::plural('like',$post->likes->count())}}
+                        </span>
                     </div>
                 </div>
                 @endforeach
