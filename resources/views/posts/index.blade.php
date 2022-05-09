@@ -3,7 +3,7 @@
     <div class="flex justify-center">
 
         <div class="bg-white p-6 round-lg w-8/12">
-            <form action="{{route('posts')}}" method="POST">
+            <form action="{{route('posts')}}" method="POST" class="mb-4">
             @csrf
                 <div class="mb-4">
                     <label for="body" class="sr-only">Body</label>
@@ -19,6 +19,34 @@
                     <button type="submit" class="bg-blue-500 px-4 py-2 rounded font-medium text-white">Post</button>
                 </div>
             </form>
+
+            @if ($posts->count())
+                @foreach ($posts as $post )
+
+                <div class="mb-4 ">
+
+                    <a href="" class="font-bold">{{$post->user->username}}</a> <span class="text-gray-600 text-sm mx-3">{{$post->created_at->diffForHumans()}}</span>
+                    <p class="text-red-500 mb-2">
+                        {{$post->body}}
+                    </p>
+
+                    <div class="flex items-center">
+                        <form class="mr-1" method="POST" action="">
+                            @csrf
+                            <button type="submit" class="text-blue-500">Like</button>
+                        </form>
+                        <form class="mr-1" method="POST" action="">
+                            @csrf
+                            <button type="submit" class="text-blue-500">Unlike</button>
+                        </form>
+                    </div>
+                </div>
+                @endforeach
+
+
+            @else
+                <p class="text-red font-medium">There are no Posts</p>
+            @endif
         </div>
     </div>
 

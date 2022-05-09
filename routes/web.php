@@ -33,4 +33,5 @@ Route::Post('/login',[LoginController::class ,'store']);
 Route::post('/logout',[LogoutController::class ,'logout'])->name('logout')->middleware('auth');
 
 Route::get('/posts',[PostController::class,'index'])->name('posts');
+Route::post('/posts',[PostController::class,'store']);
 
