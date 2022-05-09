@@ -1,5 +1,10 @@
 <x-layouts.app>
 
-    <h1>hey fucko</h1>
+    <div class="flex justify-center">
+
+        <div class="bg-white p-6 round-lg w-8/12">
+            Posts
+        </div>
+    </div>
 
 </x-layouts.app>

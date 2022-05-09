@@ -16,4 +16,4 @@ const mix = require('laravel-mix');
    require("tailwindcss"),
  ]);
 
-
+ mix.disableSuccessNotifications();
