@@ -3,6 +3,8 @@
     <div class="flex justify-center">
 
         <div class="bg-white p-6 round-lg w-8/12">
+        @auth
+
             <form action="{{route('posts')}}" method="POST" class="mb-4">
             @csrf
                 <div class="mb-4">
@@ -20,6 +22,7 @@
                 </div>
             </form>
 
+        @endauth
             @if ($posts->count())
                 @foreach ($posts as $post )
 
@@ -31,6 +34,8 @@
                     </p>
 
                     <div class="flex items-center">
+                         @auth
+
                         @if (!$post->likedBy(auth()->user()))
                         <form class="mr-1" method="POST" action="{{route('posts.like', $post->id)}}">
                             @csrf
@@ -43,6 +48,16 @@
                             <button type="submit" class="text-blue-500">Unlike</button>
                         </form>
                         @endif
+
+                         <form action="">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="text-blue-500 mx-4">Delete</button>
+
+                        </form>
+                         @endauth
+
                         <span>
                             {{$post->likes->count()}} {{Str::plural('like',$post->likes->count())}}
                         </span>
