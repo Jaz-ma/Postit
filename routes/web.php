@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterCOntroller;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\UserPostController;
 
 // Common Resource Routes:
 // index - Show all listings
@@ -40,3 +41,4 @@ Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.de
 Route::post('/posts/{post}/like',[PostLikeController::class,'store'])->name('posts.like');
 Route::delete('/posts/{post}/like',[PostLikeController::class,'destroy'])->name('posts.like');
 
+Route::get('/posts/users/{user:username}',[UserPostController::class,'index'])->name('users.posts');
