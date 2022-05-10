@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('likes','user')->get();
+        $posts = Post::latest()->with('likes','user')->get();
 
         return view('posts.index',[
             'posts'=> $posts
@@ -27,7 +27,9 @@ class PostController extends Controller
         return back()->with('message','Post Seccussfully Created');
     }
 
-    public function destroy(){
+    public function destroy(Post $post){
+        $post->delete();
 
+        return back();
     }
 }
