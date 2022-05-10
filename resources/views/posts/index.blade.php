@@ -37,8 +37,9 @@
                             <button type="submit" class="text-blue-500">Like</button>
                         </form>
                         @else
-                        <form class="mr-1" method="POST" action="">
+                        <form class="mr-1" method="POST" action="{{route('posts.like', $post->id)}}">
                             @csrf
+                            @method("DELETE")
                             <button type="submit" class="text-blue-500">Unlike</button>
                         </form>
                         @endif
