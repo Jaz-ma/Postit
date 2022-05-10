@@ -48,8 +48,7 @@
                             <button type="submit" class="text-blue-500">Unlike</button>
                         </form>
                         @endif
-                        @if ($post->ownedBy(auth()->user()))
-
+                        @can('delete',$post)
                          <form method="POST" action="{{route('posts.destroy',$post)}}">
                             @csrf
                             @method('DELETE')
@@ -57,7 +56,7 @@
                             <button type="submit" class="text-blue-500 mx-4">Delete</button>
 
                         </form>
-                        @endif
+                      @endcan
                          @endauth
 
                         <span>
