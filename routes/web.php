@@ -43,3 +43,4 @@ Route::post('/posts/{post}/like',[PostLikeController::class,'store'])->name('pos
 Route::delete('/posts/{post}/like',[PostLikeController::class,'destroy'])->name('posts.like');
 
 Route::get('/posts/users/{user:username}',[UserPostController::class,'index'])->name('users.posts');
+Route::get('phpinfo', fn () => phpinfo());
