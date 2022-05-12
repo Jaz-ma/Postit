@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['destroy','store']);
+
+    }
     public function index()
     {
         $posts = Post::latest()->with('likes','user')->get();
