@@ -1,10 +1,9 @@
 @component('mail::message')
-# Introduction
 
-The body of your message.
+{{$liker->username}} Has liked your post
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::button', ['url' => route('posts.show',$post)])
+View post
 @endcomponent
 
 Thanks,<br>
